@@ -17,9 +17,5 @@ curl https://rpm.releases.hashicorp.com/fedora/hashicorp.repo > /etc/yum.repos.d
 # this installs a package from fedora repos
 rpm-ostree install ansible htop libguestfs python3-psutil qemu-kvm terraform virt-manager virt-viewer
 
-# this would install a package from rpmfusion
-# rpm-ostree install vlc
-
-#### Example for enabling a System Unit File
-
-systemctl enable podman.socket
+# bootc problem with selinux labels (swtpm for example)
+touch /.autorelabel
