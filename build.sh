@@ -16,8 +16,6 @@ RELEASE="$(rpm -E %fedora)"
 curl https://rpm.releases.hashicorp.com/fedora/hashicorp.repo > /etc/yum.repos.d/hashicorp.repo
 # this installs a package from fedora repos
 rpm-ostree install ansible htop libguestfs python3-psutil qemu-kvm terraform virt-manager virt-viewer
-# Keep row below until Fedora 42 with fixed LUKS2 decryption screen.
-rpm-ostree initramfs-etc --track=/etc/vconsole.conf
 
 # this would install a package from rpmfusion
 # rpm-ostree install vlc
