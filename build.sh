@@ -15,7 +15,8 @@ RELEASE="$(rpm -E %fedora)"
 # prepare hashicorp repo.
 curl https://rpm.releases.hashicorp.com/fedora/hashicorp.repo > /etc/yum.repos.d/hashicorp.repo
 # this installs a package from fedora repos
-rpm-ostree install ansible htop libguestfs p7zip python3-psutil qemu-kvm terraform virt-manager virt-viewer
+rpm-ostree install ansible htop libguestfs p7zip python3-psutil qemu-kvm setroubleshoot terraform virt-manager virt-viewer
 
 # bootc problem with selinux labels (swtpm for example)
+restorecon -R /
 touch /.autorelabel
