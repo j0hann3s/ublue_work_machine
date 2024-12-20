@@ -18,5 +18,5 @@ curl https://rpm.releases.hashicorp.com/fedora/hashicorp.repo > /etc/yum.repos.d
 rpm-ostree install ansible htop libguestfs p7zip python3-psutil qemu-kvm setroubleshoot terraform virt-manager virt-viewer
 
 # bootc problem with selinux labels (swtpm for example)
-restorecon -R /
+systemctl start selinux-autorelabel.service
 touch /.autorelabel
