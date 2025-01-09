@@ -12,14 +12,8 @@ RELEASE="$(rpm -E %fedora)"
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# bootc problem with selinux labels (swtpm for example)
-touch /.autorelabel
-/sbin/restorecon -v /usr/bin/swtpm
-
-# prepare hashicorp repo.
+# Add Hashicorp repo.
 curl https://rpm.releases.hashicorp.com/fedora/hashicorp.repo > /etc/yum.repos.d/hashicorp.repo
 
-# this installs a package from fedora repos
-rpm-ostree install --apply-live ansible htop libguestfs p7zip p7zip-plugins python3-psutil qemu-kvm setroubleshoot terraform virt-manager virt-viewer
-
-/sbin/restorecon -v /usr/bin/swtpm
+# This installs all packages from the Fedora repos.
+rpm-ostree install --assumeyes --idempotent ansible htop libguestfs p7zip p7zip-plugins python3-psutil qemu-kvm setroubleshoot terraform virt-manager virt-viewer
