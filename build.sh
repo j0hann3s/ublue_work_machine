@@ -14,11 +14,12 @@ RELEASE="$(rpm -E %fedora)"
 
 # bootc problem with selinux labels (swtpm for example)
 touch /.autorelabel
+/sbin/restorecon -v /usr/bin/swtpm
 
 # prepare hashicorp repo.
 curl https://rpm.releases.hashicorp.com/fedora/hashicorp.repo > /etc/yum.repos.d/hashicorp.repo
 
 # this installs a package from fedora repos
-rpm-ostree install --apply-live ansible htop libguestfs p7zip python3-psutil qemu-kvm setroubleshoot terraform virt-manager virt-viewer
+rpm-ostree install --apply-live ansible htop libguestfs p7zip p7zip-plugins python3-psutil qemu-kvm setroubleshoot terraform virt-manager virt-viewer
 
 /sbin/restorecon -v /usr/bin/swtpm
